@@ -51,11 +51,30 @@ const nav = document.querySelector('.main-nav');
 const navArray = Array.from(nav.children);
 navArray.forEach((curr, index) => {
 	curr.textContent = siteContent['nav'][`nav-item-${index + 1}`];
+	curr.style.color = 'green';
 });
 
+// Create new <a> tag
+const anchor = document.createElement('a');
+anchor.setAttribute('href', '#');
+anchor.textContent = 'Gallery';
+anchor.setAttribute('style', 'color:green');
+nav.appendChild(anchor);
+
+const anotherAnchor = document.createElement('a');
+anotherAnchor.textContent = 'Investors';
+anotherAnchor.setAttribute('style', 'color:green');
+nav.prepend(anotherAnchor);
+
 // Get and set cta heading content
-const ctaHeading = document.querySelector('.cta-text h1');
-ctaHeading.textContent = siteContent.cta['h1'];
+const ctaChantArr = siteContent.cta.h1.split(' ');
+let ctaHeadingContent = '';
+ctaChantArr.forEach(curr => {
+	ctaHeadingContent += `<span>${curr}</span>`;
+});
+
+const ctaHeading = document.querySelector('.cta-text-heading');
+ctaHeading.innerHTML = ctaHeadingContent;
 
 // Get and set cta button
 const ctaButton = document.querySelector('.cta-text button');
@@ -112,3 +131,31 @@ visionHeading.textContent = siteContent['main-content']['vision-h4'];
 // Vision content
 const visionContent = document.querySelector('.vision-content');
 visionContent.textContent = siteContent['main-content']['vision-content'];
+
+/*********************
+ ** Contact section **
+ *********************/
+
+// Contact heading
+const contactHeading = document.querySelector('.contact-h4');
+contactHeading.textContent = siteContent['contact']['contact-h4'];
+
+// address
+const address = document.querySelector('.address');
+const addressContent = siteContent.contact.address;
+
+address.insertAdjacentText('beforeend', addressContent.substr(0, addressContent.length - 14));
+address.insertAdjacentHTML('beforeend', '<br>');
+address.insertAdjacentText('beforeend', addressContent.substr(18, addressContent.length - 1));
+
+// phone
+const phone = document.querySelector('.phone');
+phone.textContent = siteContent['contact']['phone'];
+
+// email
+const email = document.querySelector('.email');
+email.textContent = siteContent['contact']['email'];
+
+// footer
+const copyright = document.querySelector('.copyright');
+copyright.textContent = siteContent['footer']['copyright'];
