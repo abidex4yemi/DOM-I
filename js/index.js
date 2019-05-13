@@ -47,7 +47,7 @@ let logo = document.getElementById('logo-img');
 logo.setAttribute('src', siteContent['nav']['img-src']);
 
 // page navigation
-const nav = document.querySelector('.main-nav');
+const nav = document.querySelector('nav');
 const navArray = Array.from(nav.children);
 navArray.forEach((curr, index) => {
 	curr.textContent = siteContent['nav'][`nav-item-${index + 1}`];
@@ -73,75 +73,84 @@ ctaChantArr.forEach(curr => {
 	ctaHeadingContent += `<span>${curr}</span>`;
 });
 
-const ctaHeading = document.querySelector('.cta-text-heading');
-ctaHeading.innerHTML = ctaHeadingContent;
+// get call to action container
+const ctaContainer = document.querySelector('.cta');
+
+ctaContainer.children[0].children[0].innerHTML = ctaHeadingContent;
 
 // Get and set cta button
-const ctaButton = document.querySelector('.cta-text button');
-ctaButton.textContent = siteContent['cta']['button'];
+ctaContainer.children[0].children[1].textContent = siteContent['cta']['button'];
 
 // Get and set image source for cta
-const ctaImg = document.querySelector('#cta-img');
-ctaImg.setAttribute('src', siteContent['cta']['img-src']);
+ctaContainer.children[1].setAttribute('src', siteContent['cta']['img-src']);
 
 /************************
  * Main-content section
  * ********************** */
 
+// top content container
+const topContent = document.querySelector('.top-content');
+
 // features heading
-const featuresHeading = document.querySelector('.features-h4');
+const featuresHeading = topContent.children[0].children[0];
 featuresHeading.textContent = siteContent['main-content']['features-h4'];
 
 // features content
-const featuresContent = document.querySelector('.features-content');
+const featuresContent = topContent.children[0].children[1];
 featuresContent.textContent = siteContent['main-content']['features-content'];
 
 // about heading
-const aboutHeading = document.querySelector('.about-h4');
+const aboutHeading = topContent.children[1].children[0];
 aboutHeading.textContent = siteContent['main-content']['about-h4'];
 
 // about content
-const aboutContent = document.querySelector('.about-content');
+const aboutContent = topContent.children[1].children[1];
 aboutContent.textContent = siteContent['main-content']['about-content'];
 
 // Set Middle image source
 const infoImg = document.querySelector('#middle-img');
 infoImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
+// bottom content
+const bottomContent = document.querySelector('.bottom-content');
+
 // Service heading
-const serviceHeading = document.querySelector('.services-h4');
+const serviceHeading = bottomContent.children[0].children[0];
 serviceHeading.textContent = siteContent['main-content']['services-h4'];
 
 // Service content
-const serviceContent = document.querySelector('.services-content');
+const serviceContent = bottomContent.children[0].children[1];
 serviceContent.textContent = siteContent['main-content']['services-content'];
 
 // Product heading
-const productHeading = document.querySelector('.product-h4');
+const productHeading = bottomContent.children[1].children[0];
 productHeading.textContent = siteContent['main-content']['product-h4'];
 
 // Product content
-const productContent = document.querySelector('.product-content');
+const productContent = bottomContent.children[1].children[1];
 productContent.textContent = siteContent['main-content']['product-content'];
 
 // Vision heading
-const visionHeading = document.querySelector('.vision-h4');
+const visionHeading = bottomContent.children[2].children[0];
 visionHeading.textContent = siteContent['main-content']['vision-h4'];
 
 // Vision content
-const visionContent = document.querySelector('.vision-content');
+const visionContent = bottomContent.children[2].children[1];
 visionContent.textContent = siteContent['main-content']['vision-content'];
 
 /*********************
  ** Contact section **
  *********************/
 
+// contact section
+const contactContainer = document.querySelector('.contact');
+
 // Contact heading
-const contactHeading = document.querySelector('.contact-h4');
+const contactHeading = contactContainer.children[0];
 contactHeading.textContent = siteContent['contact']['contact-h4'];
 
 // address
-const address = document.querySelector('.address');
+const address = contactContainer.children[1];
 const addressContent = siteContent.contact.address;
 
 address.insertAdjacentText('beforeend', addressContent.substr(0, addressContent.length - 14));
@@ -149,13 +158,13 @@ address.insertAdjacentHTML('beforeend', '<br>');
 address.insertAdjacentText('beforeend', addressContent.substr(18, addressContent.length - 1));
 
 // phone
-const phone = document.querySelector('.phone');
+const phone = contactContainer.children[2];
 phone.textContent = siteContent['contact']['phone'];
 
 // email
-const email = document.querySelector('.email');
+const email = contactContainer.children[3];
 email.textContent = siteContent['contact']['email'];
 
 // footer
-const copyright = document.querySelector('.copyright');
+const copyright = document.querySelector('footer p');
 copyright.textContent = siteContent['footer']['copyright'];
